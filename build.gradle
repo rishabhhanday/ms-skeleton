@@ -3,8 +3,14 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id 'org.hidetake.swagger.generator' version '2.18.2'
+	id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.1"
 }
 
+idea.project.settings {
+	taskTriggers {
+		afterSync tasks.getByName("generateSwaggerCode")
+	}
+}
 
 group = 'com.sample'
 version = '0.0.1-SNAPSHOT'
